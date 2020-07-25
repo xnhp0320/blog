@@ -1,4 +1,4 @@
-baseURL = "https://floatingminds.ink"
+baseURL = "https://blog.floatingminds.ink"
 title = "漂浮的思绪"
 theme = "etch"
 languageCode = "en-zh"
@@ -8,7 +8,7 @@ pygmentsUseClasses = true
 
 [params]
   description = "Peng He's blog"
-  copyright = "Copyright © 2020 Peng He"
+  copyright = "Copyright © 2020 Floating Minds Peng He"
   dark = "auto"
   highlight = true
 
