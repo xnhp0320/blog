@@ -7,7 +7,7 @@ draft = true
 
 关于Systemtap，网上有很多教程，比较推荐的是[这里](https://sourceware.org/systemtap/langref.pdf)和[这里](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/pdf/systemtap_beginners_guide/red_hat_enterprise_linux-7-systemtap_beginners_guide-en-us.pdf)。但每次读下来，都觉得没讲清楚。这些教程对于一般使用算是够了，但是对一些复杂任务来说还是略浅。以下记录下一些限制，可能有更好的解决的方案，欢迎提建议。
 
-##字典的局限性
+## 字典的局限性
 Systemtap的语言比较有特色的是容器只有字典，数组可以被认为是一种特殊的字典，这一点有点类似于lua：
 
 ```
@@ -60,7 +60,7 @@ probe timer.s(1) {
 
 
 
-##对Aggregate的理解
+## 对Aggregate的理解
 
 Aggregate其实就是一个简单的，定制的数据结构，我一开始以为他会存储数据，但实际上他不会。如果用C++的方式理解Aggregate的工作原理，大意是以下的几行代码：
 
@@ -159,7 +159,7 @@ c->last_stmt = "identifier 'stop' at compose_output_actions.stp:18:9";
 
 在github的[这里](https://github.com/groleo/systemtap/blob/bd23cd846d787b59183d6d6a91046c1fe4cb3dc3/runtime/linux/probe_lock.h#L43)，我们可以看到stap的加锁方式：
 
-```
+```C
 static unsigned
 stp_lock_probe(const struct stp_probe_lock *locks, unsigned num_locks)
 {
@@ -204,6 +204,6 @@ stap --supress-time-limits
 
 这意味着即使在stap的世界里，也没有银弹，你需要了解你的业务代码，通过猜测而编写trace代码，而不是寄希望于某些通用机制，当调包侠。
 
-##trace的开销
+## trace的开销
 
 我用bpftrace过一个非常短的函数。在火焰图上可以看出，当加上trace的时候，能看到uprobe的函数开销几乎占到了整个函数调用的时间的80%。但是即使是这样一种方式，我还是发现了这个函数偶尔的jitter，当然最终结论和这个函数基本无关。我想说的是，trace肯定有开销，但是你发现jitter达到了ms级别时，哪怕你的函数再短，你也可以用trace去筛查他到底是不是jitter的来源。

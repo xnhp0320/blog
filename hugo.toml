@@ -1,35 +1,31 @@
-baseURL = "https://xnhp0320.github.io"
+baseURL = "/"
 title = "Floating Minds"
-theme = "etch"
+theme = "hugo-xmin"
 languageCode = "zh-CN"
-enableInlineShortcodes = true
-pygmentsCodeFences = true
-pygmentsUseClasses = true
 
 [params]
   description = "Tech and other stuff"
-  copyright = "Copyright © 2020 P3ng"
-  dark = "off"
-  highlight = true
+  footer= "&copy; Peng He 2023 -- {Year} | [Github](https://github.com/xnhp0320)"
 
 [menu]
   [[menu.main]]
-    identifier = "posts"
-    name = "posts"
-    title = "posts"
-    url = "/"
+    name = "Home"
+    url = ""
     weight = 10
 
   [[menu.main]]
-    identifier = "about"
     name = "about"
-    title = "about"
     url = "/about/"
     weight = 20
 
 [permalinks]
-  posts = "/:title/"
+  note = "/post/:year/:month/:day/:slug/"
+  post = "/post/:year/:month/:day/:slug/"
+
+[markup]
+  [[markup.highlit]]
+    codeFences=false
 
 [markup.goldmark.renderer]
-  # Allows HTML in Markdown
   unsafe = true
+  # Allows HTML in Markdown
