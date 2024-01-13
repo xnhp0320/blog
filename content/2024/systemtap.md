@@ -88,7 +88,7 @@ class Aggregate {
 
 是否瞬间就理解了？其实很简单。就是他在语言里引入了一种原生数据结构，但是不支持元素遍历。这些东西在他的tutorial里，讲的很fancy。其实还不如一开始老老实实讲清楚。
 
-##Probe的并发性
+## Probe的并发性
 多个Probe在多个核出现时，Systemtap对全局变量的数据类型是如何保护的？文档里没有明确讲清楚，只是在某些地方作了一些暗示，比如在这个[tutorial](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/pdf/systemtap_beginners_guide/red_hat_enterprise_linux-7-systemtap_beginners_guide-en-us.pdf)：
 
 >What about locking? If multiple probes seek conflicting locks on the same global variables, one or more of them will time out, and be aborted. Such events are tallied as “skipped” probes, and a count is displayed at session end. A configurable number of skipped probes can trigger an abort of the session.
